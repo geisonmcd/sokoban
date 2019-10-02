@@ -23,11 +23,17 @@ _global_script_classes=[ {
 "class": "PhysicsBox",
 "language": "GDScript",
 "path": "res://world/props/physics_box/PhysicsBox.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://player/Player.gd"
 } ]
 _global_script_class_icons={
 "Box": "",
 "GridBox": "",
-"PhysicsBox": ""
+"PhysicsBox": "",
+"Player": ""
 }
 
 [application]

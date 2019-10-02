@@ -63,7 +63,7 @@ __meta__ = {
 position = Vector2( 576, 320 )
 z_as_relative = true
 
-[node name="Player" parent="." instance=ExtResource( 4 )]
+[node name="Player" parent="Level" instance=ExtResource( 4 )]
 position = Vector2( 416, 352 )
 z_index = 1
 collision/safe_margin = 0.001
@@ -71,4 +71,4 @@ move_speed = 300.0
 
 [node name="RedPlatform" parent="." instance=ExtResource( 5 )]
 light_mask = 561559
-position = Vector2( 832, 352 )
+position = Vector2( 800, 352 )
