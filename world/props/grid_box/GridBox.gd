@@ -7,6 +7,7 @@ export var sliding_time : = 0.3
 
 var tile_map : TileMap
 var sliding : = false
+onready var label : Label = get_parent().get_node("Label")
 
 
 func initialize(_tile_map: TileMap) -> void:
@@ -14,6 +15,7 @@ func initialize(_tile_map: TileMap) -> void:
 	position = calculate_destination(Vector2())
 
 func push(velocity: Vector2) -> void:
+#	label.text = str(velocity.x) + str(velocity.y)
 	if sliding:
 		return
 	var move_to : = calculate_destination(velocity.normalized())
