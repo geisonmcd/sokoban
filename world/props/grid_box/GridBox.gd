@@ -15,7 +15,6 @@ func initialize(_tile_map: TileMap) -> void:
 	position = calculate_destination(Vector2())
 
 func push(velocity: Vector2) -> void:
-#	label.text = str(velocity.x) + str(velocity.y)
 	if sliding:
 		return
 	var move_to : = calculate_destination(velocity.normalized())

@@ -21,8 +21,6 @@ func _physics_process(delta: float) -> void:
 	update_animation(motion)
 	var destination = calculate_destination((push_speed * motion).normalized())
 	var gap = (destination - self.position)
-#	label.text = str((destination - self.position))
-	label.text = str(motion)
 	move_and_slide(motion * 300)
 	if get_slide_count() > 0:
 		check_box_collision(motion)
@@ -36,9 +34,7 @@ func update_animation(motion: Vector2) -> void:
 	var animation : = "idle"
 	if motion.x > 0:
 		animation = "right"
-		motion.x += 64
 	elif motion.x < 0:
-		motion.x -= 64
 		animation = "left"
 	elif motion.y < 0:
 		animation = "up"

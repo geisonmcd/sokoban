@@ -65,7 +65,6 @@ margin_top = 192.0
 margin_right = 949.0
 margin_bottom = 320.0
 rect_scale = Vector2( 2.93964, 1.84812 )
-text = "Alguma coisa mudando"
 
 [node name="GridBox" parent="Level" instance=ExtResource( 3 )]
 position = Vector2( 384, 352 )
