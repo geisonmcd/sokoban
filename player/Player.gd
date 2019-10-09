@@ -1,37 +1,62 @@
 extends KinematicBody2D
 
 class_name Player
-onready var animated_sprite : AnimatedSprite = $AnimatedSprite
-onready var tween : Tween = $Tween
-export var move_speed : = 250.0
+
 export var push_speed : = 125.0
-export var sliding_time : = 0.3
-var sliding : = false
-var tile_map : TileMap
-onready var label : Label = get_parent().get_node("Label")
+export var move_speed : = 64.0
+var block_size : = 64
+var moving : = false
+var initial_position := Vector2()
+var last_position := Vector2()
+var direction := Vector2()
+var count_stop := 0
 
-func initialize(_tile_map: TileMap) -> void:
-	tile_map = _tile_map
-	position = calculate_destination(Vector2())
-
-func _physics_process(delta: float) -> void:
-	var motion : = Vector2()
-	motion.x = int(Input.get_action_strength("move_right")) - int(Input.get_action_strength("move_left"))
-	motion.y = int(Input.get_action_strength("move_down")) - int(Input.get_action_strength("move_up"))
-	update_animation(motion)
-	var destination = calculate_destination((push_speed * motion).normalized())
-	var gap = (destination - self.position)
-	move_and_slide(motion * 300)
-	if get_slide_count() > 0:
-		check_box_collision(motion)
+func _ready():
+	initial_position = get_position()
 	
-func calculate_destination(direction: Vector2) -> Vector2:
-	var tile_map_position = tile_map.world_to_map(global_position) + direction
-	label.text = str(tile_map.map_to_world(tile_map_position)) 
-	return tile_map.map_to_world(tile_map_position)
+func _physics_process(delta: float) -> void:
+	if !moving:
+		count_stop = 0
+		direction.x = int(Input.get_action_strength("move_right")) - int(Input.get_action_strength("move_left"))
+		direction.y = int(Input.get_action_strength("move_down")) - int(Input.get_action_strength("move_up"))
+		
+		if abs(direction.x) + abs(direction.y) > 1:
+			moving = false
+			direction.x = 0
+			direction.y = 0
+			update_animation(direction)
+			return
+			
+		initial_position = get_position()
+		moving = Input.is_action_pressed("move_right") || Input.is_action_pressed("move_left") || Input.is_action_pressed("move_down") || Input.is_action_pressed("move_up")
+		
 
+	update_animation(direction)
+	
+	if moving:
+		move_and_slide(direction.normalized() * move_speed, Vector2())
+		last_position = get_position()
+
+	if get_slide_count() > 0:
+		check_box_collision(direction)
+		if get_slide_collision(0).collider as TileMap: 
+			moving = false
+			direction.x = 0
+			direction.y = 0
+	
+	var finish := direction.x == 1 && ((initial_position.x + block_size) <= get_position().x)
+	finish = finish || direction.x == -1 && ((initial_position.x - block_size) >= get_position().x)
+	finish = finish || direction.y == 1 && ((initial_position.y + block_size) <= get_position().y)
+	finish = finish || direction.y == -1 && ((initial_position.y - block_size) >= get_position().y)
+	
+	if finish:
+		moving = false
+		direction.x = 0
+		direction.y = 0
+		
 func update_animation(motion: Vector2) -> void:
 	var animation : = "idle"
+	
 	if motion.x > 0:
 		animation = "right"
 	elif motion.x < 0:
@@ -40,8 +65,9 @@ func update_animation(motion: Vector2) -> void:
 		animation = "up"
 	elif motion.y > 0:
 		animation = "down"
-	if animated_sprite.animation != animation:
-		animated_sprite.play(animation)
+	
+	if $AnimatedSprite.animation != animation:
+		$AnimatedSprite.play(animation)
 
 func check_box_collision(motion: Vector2) -> void:
 	#Isso aqui é pra não empurrar a caixa na horizontal, ou seja o vetor (motion) vai estar (1,1). 1 + 1 = 2
