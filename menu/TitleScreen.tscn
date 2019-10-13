@@ -26,7 +26,7 @@ func _on_FadeIn_fade_finished():
 	get_tree().change_scene(scene_path_to_load) 
 "
 
-[node name="TitlieScreen" type="Control"]
+[node name="TitleScreen" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = SubResource( 1 )
