@@ -51,7 +51,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Sokoban Floripa!"
-run/main_scene="res://menu/TitlieScreen.tscn"
+run/main_scene="res://menu/TitleScreen.tscn"
 config/icon="res://icon.png"
 
 [display]
