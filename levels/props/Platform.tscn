@@ -1,8 +1,9 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://world/props/Platform.gd" type="Script" id=1]
+[ext_resource path="res://levels/props/Platform.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/platforms/crate_38.png" type="Texture" id=2]
 [ext_resource path="res://assets/sprites/platforms/crate_33.png" type="Texture" id=3]
+
 
 [sub_resource type="SpriteFrames" id=1]
 

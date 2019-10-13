@@ -4,15 +4,19 @@ class_name Player
 
 export var push_speed : = 125.0
 export var move_speed : = 64.0
-var block_size : = 64
+var block_size : = 62
 var moving : = false
 var initial_position := Vector2()
-var last_position := Vector2()
+var last_position_box := Vector2()
 var direction := Vector2()
 var count_stop := 0
+var tile_map : TileMap
 
 func _ready():
 	initial_position = get_position()
+	
+func initialize(_tile_map: TileMap) -> void:
+	tile_map = _tile_map
 	
 func _physics_process(delta: float) -> void:
 	if !moving:
@@ -21,39 +25,30 @@ func _physics_process(delta: float) -> void:
 		direction.y = int(Input.get_action_strength("move_down")) - int(Input.get_action_strength("move_up"))
 		
 		if abs(direction.x) + abs(direction.y) > 1:
-			moving = false
-			direction.x = 0
-			direction.y = 0
+			reset_moving_and_direction()
 			update_animation(direction)
 			return
 			
 		initial_position = get_position()
-		moving = Input.is_action_pressed("move_right") || Input.is_action_pressed("move_left") || Input.is_action_pressed("move_down") || Input.is_action_pressed("move_up")
-		
+		moving = abs(direction.x) + abs(direction.y) > 0
 
 	update_animation(direction)
-	
-	if moving:
-		move_and_slide(direction.normalized() * move_speed, Vector2())
-		last_position = get_position()
+	if !moving:
+		return
+
+	move_and_slide(direction.normalized() * move_speed, Vector2())
 
 	if get_slide_count() > 0:
 		check_box_collision(direction)
-		if get_slide_collision(0).collider as TileMap: 
-			moving = false
-			direction.x = 0
-			direction.y = 0
-	
+
 	var finish := direction.x == 1 && ((initial_position.x + block_size) <= get_position().x)
 	finish = finish || direction.x == -1 && ((initial_position.x - block_size) >= get_position().x)
 	finish = finish || direction.y == 1 && ((initial_position.y + block_size) <= get_position().y)
 	finish = finish || direction.y == -1 && ((initial_position.y - block_size) >= get_position().y)
-	
+
 	if finish:
-		moving = false
-		direction.x = 0
-		direction.y = 0
-		
+		reset_moving_and_direction()
+
 func update_animation(motion: Vector2) -> void:
 	var animation : = "idle"
 	
@@ -71,8 +66,22 @@ func update_animation(motion: Vector2) -> void:
 
 func check_box_collision(motion: Vector2) -> void:
 	#Isso aqui é pra não empurrar a caixa na horizontal, ou seja o vetor (motion) vai estar (1,1). 1 + 1 = 2
+	if get_slide_collision(0).collider as TileMap:
+		reset_moving_and_direction()
+		
 	if abs(motion.x) + abs(motion.y) > 1:
 		return
+
 	var box : = get_slide_collision(0).collider as Box
-	if box:
+	if !box:
+		return
+		
+	if box.can_move(box.calculate_destination((push_speed * motion).normalized())):
 		box.push(push_speed * motion)
+	else:
+		reset_moving_and_direction()
+
+func reset_moving_and_direction():
+	moving = false
+	direction.x = 0
+	direction.y = 0

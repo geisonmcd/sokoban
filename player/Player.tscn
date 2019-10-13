@@ -53,10 +53,8 @@ __meta__ = {
 frames = SubResource( 1 )
 animation = "idle"
 playing = true
-centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 32, 32 )
 shape = SubResource( 2 )
 
 [node name="Tween" type="Tween" parent="."]

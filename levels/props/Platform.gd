@@ -5,7 +5,6 @@ onready var animated_sprite : AnimatedSprite = $AnimatedSprite
 signal pressed
 signal unpressed
 
-
 func _ready() -> void:
 	connect("body_entered", self, "_on_body_entered")
 	connect("body_exited", self, "_on_body_exited")

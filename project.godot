@@ -12,17 +12,17 @@ _global_script_classes=[ {
 "base": "KinematicBody2D",
 "class": "Box",
 "language": "GDScript",
-"path": "res://world/props/Box.gd"
+"path": "res://levels/props/Box.gd"
 }, {
 "base": "Box",
 "class": "GridBox",
 "language": "GDScript",
-"path": "res://world/props/grid_box/GridBox.gd"
+"path": "res://levels/props/grid_box/GridBox.gd"
 }, {
 "base": "Box",
 "class": "PhysicsBox",
 "language": "GDScript",
-"path": "res://world/props/physics_box/PhysicsBox.gd"
+"path": "res://levels/props/physics_box/PhysicsBox.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Player",
@@ -39,7 +39,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Sokoban Floripa!"
-run/main_scene="res://Game.tscn"
+run/main_scene="res://levels/Level1.tscn"
 config/icon="res://icon.png"
 
 [display]
