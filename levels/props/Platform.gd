@@ -2,9 +2,14 @@ extends Area2D
 
 onready var animated_sprite : AnimatedSprite = $AnimatedSprite
 
+class_name RedPlatform
 signal pressed
 signal unpressed
 
+func initialize(_floor: TileMap) -> void:
+	connect("pressed", _floor, "_on_RedPlatform_pressed")
+	connect("unpressed", _floor, "_on_RedPlatform_unpressed")
+	
 func _ready() -> void:
 	connect("body_entered", self, "_on_body_entered")
 	connect("body_exited", self, "_on_body_exited")
