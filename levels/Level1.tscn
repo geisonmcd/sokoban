@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://floor/Floor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://levels/props/grid_box/GridBox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://levels/props/RedPlatform.tscn" type="PackedScene" id=4]
+[ext_resource path="res://levels/props/AmbientSound.tscn" type="PackedScene" id=5]
 
 [node name="Level1" type="Node"]
 
@@ -20,3 +21,5 @@ position = Vector2( 704, 321.797 )
 
 [node name="RedPlatform" parent="Floor" instance=ExtResource( 4 )]
 position = Vector2( 864, 353.797 )
+
+[node name="AmbientSound" parent="." instance=ExtResource( 5 )]
