@@ -17,7 +17,7 @@ position = Vector2( 480, 353.797 )
 z_index = 1
 
 [node name="GridBox" parent="Floor" instance=ExtResource( 3 )]
-position = Vector2( 704, 321.797 )
+position = Vector2( 704.062, 320.305 )
 
 [node name="RedPlatform" parent="Floor" instance=ExtResource( 4 )]
 position = Vector2( 864, 353.797 )
