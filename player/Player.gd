@@ -19,7 +19,14 @@ func _ready():
 func initialize(_tile_map: TileMap) -> void:
 	tile_map = _tile_map
 	
-func _physics_process(delta: float) -> void:		
+func _physics_process(delta: float) -> void:
+	direction.x = int(Input.get_action_strength("move_right")) - int(Input.get_action_strength("move_left"))
+	direction.y = int(Input.get_action_strength("move_down")) - int(Input.get_action_strength("move_up"))
+	move_and_slide(direction.normalized() * move_speed, Vector2())
+	if get_slide_count() > 0:
+		check_box_collision(direction)
+	update_animation(direction)
+	return 
 	if !moving:		
 		count_stop = 0
 		direction.x = int(Input.get_action_strength("move_right")) - int(Input.get_action_strength("move_left"))
