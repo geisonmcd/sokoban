@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/chooseLevel.png-513fb04ecce7c3dc05fedcabd65d5739.stex"
+path="res://.import/level4.png-de317cb7556cacafad77531d62e97529.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/chooseLevel.png"
-dest_files=[ "res://.import/chooseLevel.png-513fb04ecce7c3dc05fedcabd65d5739.stex" ]
+source_file="res://assets/sprites/levels/level4.png"
+dest_files=[ "res://.import/level4.png-de317cb7556cacafad77531d62e97529.stex" ]
 
 [params]
 

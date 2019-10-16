@@ -2,6 +2,8 @@ extends ColorRect
 
 signal fade_finished
 
+class_name FadeIn
+
 func fade_in():
 	$AnimationPlayer.play("fade_in")
 

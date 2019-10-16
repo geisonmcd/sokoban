@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/chooseLevel.png-513fb04ecce7c3dc05fedcabd65d5739.stex"
+path="res://.import/newGameHover.png-ac3ecaba7394ec09eb78c63c2100fc6b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/chooseLevel.png"
-dest_files=[ "res://.import/chooseLevel.png-513fb04ecce7c3dc05fedcabd65d5739.stex" ]
+source_file="res://assets/newGameHover.png"
+dest_files=[ "res://.import/newGameHover.png-ac3ecaba7394ec09eb78c63c2100fc6b.stex" ]
 
 [params]
 

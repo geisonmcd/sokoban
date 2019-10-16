@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/chooseLevel.png-513fb04ecce7c3dc05fedcabd65d5739.stex"
+path="res://.import/MenuIcon.png-79eab68bd0507593092b349ade7a5e92.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/chooseLevel.png"
-dest_files=[ "res://.import/chooseLevel.png-513fb04ecce7c3dc05fedcabd65d5739.stex" ]
+source_file="res://assets/MenuIcon.png"
+dest_files=[ "res://.import/MenuIcon.png-79eab68bd0507593092b349ade7a5e92.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/chooseLevel.png-513fb04ecce7c3dc05fedcabd65d5739.stex"
+path="res://.import/level5Hover.png-9537fc74a00ccfdffb2423d1d3bd2f41.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/chooseLevel.png"
-dest_files=[ "res://.import/chooseLevel.png-513fb04ecce7c3dc05fedcabd65d5739.stex" ]
+source_file="res://assets/sprites/levels/level5Hover.png"
+dest_files=[ "res://.import/level5Hover.png-9537fc74a00ccfdffb2423d1d3bd2f41.stex" ]
 
 [params]
 
