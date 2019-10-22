@@ -1,2 +1,2 @@
 # sokoban
-Jogo de jogos digitais
+Remake do clássico Sokoban para a disciplina de Jogos Digitais
